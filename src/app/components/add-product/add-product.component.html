@@ -1,0 +1,38 @@
+<h2 mat-dialog-title>Create a new product.</h2>
+<mat-dialog-content>
+  <form>
+    <ng-container>
+      <mat-form-field>
+        <mat-label>Description</mat-label>
+        <input matInput type="text" placeholder="Fill in the description">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Price</mat-label>
+        <input matInput type="number" placeholder="Fill in the price">
+      </mat-form-field>
+    </ng-container>
+    <ng-container>
+      <mat-form-field>
+        <mat-label>Volume</mat-label>
+        <input matInput type="number" placeholder="Fill in the volume">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Volume unit</mat-label>
+        <mat-select>
+          <mat-option disabled [value]="-1">Select a volume unit</mat-option>
+          <mat-option>cl</mat-option>
+          <mat-option>dl</mat-option>
+          <mat-option>l</mat-option>
+          <mat-option>hl</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </ng-container>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cancel</button>
+  <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
+  <button mat-button [mat-dialog-close]="true">Save</button>
+</mat-dialog-actions>
+
+
