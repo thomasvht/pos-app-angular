@@ -1,9 +1,6 @@
+import { FirebaseService } from './../../shared/firebase.service';
 import { Component, OnInit } from '@angular/core';
-
-const ELEMENT_DATA = [
-  {description: 'Coca-cola', price: '1.00', volume: '0.20', volumeUnit: 'l'},
-  {description: 'Jupiler', price: '1.50', volume: '0.25', volumeUnit: 'l'}
-]
+import { Product } from 'src/app/entities/product';
 
 @Component({
   selector: 'app-product-overview',
@@ -11,13 +8,17 @@ const ELEMENT_DATA = [
   styleUrls: ['./product-overview.component.scss']
 })
 export class ProductOverviewComponent implements OnInit {
-
   displayedColumns: string[] = ['description', 'price', 'volume', 'edit', 'delete'];
-  dataSource = ELEMENT_DATA;
+  dataSource: Array<Product> = [];
 
-  constructor() { }
+  constructor(private firebaseService: FirebaseService) {
+  }
 
   ngOnInit(): void {
+    this.firebaseService.getProducts()
+    .then((response) => {
+      this.dataSource = response;
+    })
   }
 
 }
