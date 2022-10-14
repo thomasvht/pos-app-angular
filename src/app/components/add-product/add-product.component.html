@@ -1,38 +1,38 @@
 <h2 mat-dialog-title>Create a new product.</h2>
 <mat-dialog-content>
-  <form>
+  <form [formGroup]="form">
     <ng-container>
       <mat-form-field>
         <mat-label>Description</mat-label>
-        <input matInput type="text" placeholder="Fill in the description">
+        <input matInput formControlName="description" type="text" placeholder="Fill in the description" required>
       </mat-form-field>
       <mat-form-field>
         <mat-label>Price</mat-label>
-        <input matInput type="number" placeholder="Fill in the price">
+        <input matInput formControlName="price" type="number" placeholder="Fill in the price" required>
       </mat-form-field>
     </ng-container>
     <ng-container>
       <mat-form-field>
         <mat-label>Volume</mat-label>
-        <input matInput type="number" placeholder="Fill in the volume">
+        <input matInput formControlName="volume" type="number" placeholder="Fill in the volume" required>
       </mat-form-field>
       <mat-form-field>
         <mat-label>Volume unit</mat-label>
-        <mat-select>
+        <mat-select formControlName="volumeUnit" required>
           <mat-option disabled [value]="-1">Select a volume unit</mat-option>
-          <mat-option>cl</mat-option>
-          <mat-option>dl</mat-option>
-          <mat-option>l</mat-option>
-          <mat-option>hl</mat-option>
+          <mat-option value="cl">cl</mat-option>
+          <mat-option value="dl">dl</mat-option>
+          <mat-option value="l">l</mat-option>
+          <mat-option value="hl">hl</mat-option>
         </mat-select>
       </mat-form-field>
     </ng-container>
   </form>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-flat-button mat-dialog-close color="warn">Cancel</button>
   <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
-  <button mat-button [mat-dialog-close]="true">Save</button>
+  <button [disabled]="form.invalid" mat-flat-button [mat-dialog-close]="form.getRawValue()" color="primary">Save</button>
 </mat-dialog-actions>
 
 

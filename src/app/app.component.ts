@@ -1,3 +1,4 @@
+import { FirebaseService } from './shared/firebase.service';
 import { AddProductComponent } from './components/add-product/add-product.component';
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
@@ -9,7 +10,7 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class AppComponent {
 
-  constructor(private dialog: MatDialog) {
+  constructor(private dialog: MatDialog, private firebaseService: FirebaseService) {
   }
 
   public newProduct(): void {
@@ -21,7 +22,9 @@ export class AppComponent {
     dialogRef
     .afterClosed()
     .subscribe(result => {
-      console.log('Result: ', result);
+      if(result) {
+        this.firebaseService.addProduct(result);
+      }
     });
   }
 }

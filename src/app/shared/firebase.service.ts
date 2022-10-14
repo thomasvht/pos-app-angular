@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { initializeApp } from 'firebase/app';
-import { doc, setDoc, getFirestore } from 'firebase/firestore';
-import { collection, getDocs } from 'firebase/firestore';
+import { doc, setDoc, getFirestore, collection, getDocs } from 'firebase/firestore';
 import { environment } from '../../environments/environment';
 import { Product } from '../entities/product';
 
@@ -38,7 +37,8 @@ export class FirebaseService {
 
   public async addProduct(product: Product) {
     // Add a new document in collection "products"
-    await setDoc(doc(this.db, "products"), product);
+    const newProductRef = doc(collection(this.db, "Products"));
+    await setDoc(newProductRef, product);
   }
 
   public editProduct() {
