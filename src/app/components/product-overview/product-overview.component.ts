@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 const ELEMENT_DATA = [
-  {description: 'Coca-cola', price: '1', volume: '0.2', volumeUnit: 'l'},
-  {description: 'Jupiler', price: '1.5', volume: '0.25', volumeUnit: 'l'}
+  {description: 'Coca-cola', price: '1.00', volume: '0.20', volumeUnit: 'l'},
+  {description: 'Jupiler', price: '1.50', volume: '0.25', volumeUnit: 'l'}
 ]
 
 @Component({
