@@ -2,6 +2,7 @@ import { FirebaseService } from './shared/firebase.service';
 import { AddProductComponent } from './components/add-product/add-product.component';
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -21,7 +22,7 @@ export class AppComponent {
 
     dialogRef
     .afterClosed()
-    .subscribe(result => {
+    .subscribe((result) => {
       if(result) {
         this.firebaseService.addProduct(result);
       }

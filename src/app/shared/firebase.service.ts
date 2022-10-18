@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { initializeApp } from 'firebase/app';
-import { doc, setDoc, getFirestore, collection, getDocs } from 'firebase/firestore';
+import { doc, setDoc, getFirestore, collection, getDocs, deleteDoc } from 'firebase/firestore';
 import { environment } from '../../environments/environment';
 import { Product } from '../entities/product';
 
@@ -45,7 +45,7 @@ export class FirebaseService {
 
   }
 
-  public deleteProduct() {
-
+  public async deleteProduct(id: string) {
+    await deleteDoc(doc(this.db, "Products", id));
   }
 }

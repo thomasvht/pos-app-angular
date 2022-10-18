@@ -21,4 +21,8 @@ export class ProductOverviewComponent implements OnInit {
     })
   }
 
+  deleteProduct(id: string) {
+    this.firebaseService.deleteProduct(id).finally(() => location.reload());
+  }
+
 }
