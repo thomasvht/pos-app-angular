@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { ProductOverviewComponent } from './components/product-overview/product-overview.component';
 import { AddProductComponent } from './components/add-product/add-product.component';
 
-import { MatButtonModule } from '@angular/material/button'
+import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
