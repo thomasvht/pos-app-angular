@@ -1,6 +1,8 @@
 import { FirebaseService } from './../../shared/firebase.service';
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/entities/product';
+import { AddProductComponent } from '../add-product/add-product.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-product-overview',
@@ -11,7 +13,7 @@ export class ProductOverviewComponent implements OnInit {
   displayedColumns: string[] = ['description', 'price', 'volume', 'edit', 'delete'];
   dataSource: Array<Product> = [];
 
-  constructor(private firebaseService: FirebaseService) {
+  constructor(private firebaseService: FirebaseService, private dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -19,6 +21,21 @@ export class ProductOverviewComponent implements OnInit {
     .then((response) => {
       this.dataSource = response;
     })
+  }
+
+  editProduct(id: string) {
+    const product = this.firebaseService.getProductById(id);
+    const dialogRef = this.dialog.open(AddProductComponent, {
+      height: '540px',
+      width: '800px',
+      data: product
+    });
+
+    dialogRef
+    .afterClosed()
+    .subscribe(result => {
+      this.firebaseService.editProduct(result);
+    }, () => {}, () => {location.reload()});
   }
 
   deleteProduct(id: string) {
