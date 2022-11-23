@@ -21,11 +21,13 @@ export class AddProductComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.form.patchValue({
-      description: this.data.description,
-      price: this.data.price,
-      volume: this.data.volume,
-      volumeUnit: this.data.volumeUnit
-    });
+    if ( this.data) {
+      this.form.patchValue({
+        description: this.data.description,
+        price: this.data.price,
+        volume: this.data.volume,
+        volumeUnit: this.data.volumeUnit
+      });
+    }
   }
 }
