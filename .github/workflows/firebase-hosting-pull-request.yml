@@ -8,13 +8,10 @@ jobs:
     if: '${{ github.event.pull_request.head.repo.full_name == github.repository }}'
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@master
-
-      - name: Setup node
-        uses: actions/setup-node@master
+      - uses: actions/checkout@master
+      - run: 'yarn && yarn build:prod'
+      - uses: FirebaseExtended/action-hosting-deploy@master
         with:
-          node-version: "16"
-
-      - name: Install and build
-        run: yarn install && yarn build:prod
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_POS_APP_ANGULAR_6EEC0 }}'
+          projectId: pos-app-angular-6eec0
