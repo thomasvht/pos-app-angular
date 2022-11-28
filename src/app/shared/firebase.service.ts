@@ -50,7 +50,13 @@ export class FirebaseService {
 
   public async editProduct(product: Product) {
     const productRef = doc(this.db, 'Products', product.id);
-    await updateDoc(productRef, {product});
+    await updateDoc(productRef, {
+      description: product.description,
+      price: product.price,
+      volume: product.volume,
+      volumeUnit: product.volumeUnit
+    });
+    location.reload();
   }
 
   public async deleteProduct(id: string) {

@@ -1,3 +1,4 @@
+import { FormGroup } from '@angular/forms';
 import { FirebaseService } from './../../shared/firebase.service';
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/entities/product';
@@ -33,9 +34,9 @@ export class ProductOverviewComponent implements OnInit {
 
     dialogRef
     .afterClosed()
-    .subscribe(result => {
-      this.firebaseService.editProduct(result);
-    }, () => {}, () => {location.reload()});
+    .subscribe((result: FormGroup) => {
+      this.firebaseService.editProduct({id, ...result.value});
+    });
   }
 
   deleteProduct(id: string) {
