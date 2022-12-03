@@ -8,6 +8,7 @@
               <mat-card-header>
                 <mat-card-title>{{product.description}}</mat-card-title>
                 <mat-card-subtitle>€ {{product.price}}</mat-card-subtitle>
+                <img mat-card-avatar [src]="'assets/logos/'+product.description+'.webp'">
               </mat-card-header>
             </mat-card>
         </mat-grid-tile>
