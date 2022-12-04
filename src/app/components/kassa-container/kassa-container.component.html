@@ -1,0 +1,22 @@
+<ng-container class="content-wrapper">
+  <div class="container-wrapper">
+    <div class="container">
+      <mat-grid-list cols="4" class="flex">
+        <mat-grid-tile [colspan]="3" [rowspan]="1">
+          <mat-grid-tile-header>Producten</mat-grid-tile-header>
+            <mat-card *ngFor="let product of products" (click)="addProductToTab(product)" class="spacing">
+              <mat-card-header>
+                <mat-card-title>{{product.description}}</mat-card-title>
+                <mat-card-subtitle>€ {{product.price}}</mat-card-subtitle>
+                <img mat-card-avatar [src]="'assets/logos/'+product.description+'.webp'">
+              </mat-card-header>
+            </mat-card>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-grid-tile-header>Overzicht</mat-grid-tile-header>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+    </div>
+  </ng-container>

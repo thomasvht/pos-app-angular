@@ -1,15 +1,10 @@
 <mat-toolbar color="primary">
-  <mat-icon>local_drink</mat-icon>
-  <span style="margin-left: 3ch;"> Register Overview HscCentaura</span>
+  <mat-icon style="padding-right: 1ch;">local_drink</mat-icon>
+  <nav mat-tab-nav-bar [color]="color" [backgroundColor]="background" [tabPanel]="tabPanel">
+    <a mat-tab-link *ngFor="let link of links"
+    (click)="activeLink = link" [routerLink]="'/' + link"
+    [active]="activeLink === link"> {{link}} </a>
+  </nav>
+  <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
 </mat-toolbar>
-
-<div class="content-wrapper">
-  <button (click)="newProduct()" mat-flat-button color="primary">
-    <mat-icon>add</mat-icon> Add Product
-  </button>
-
-  <div class="container-wrapper">
-    <div class="container">
-      <app-product-overview></app-product-overview>
-    </div>
-</div>
+<router-outlet></router-outlet>
