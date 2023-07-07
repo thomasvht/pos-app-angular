@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProductbeheerContainerComponent } from './productbeheer-container.component';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('ProductbeheerContainerComponent', () => {
   let component: ProductbeheerContainerComponent;
@@ -8,7 +10,10 @@ describe('ProductbeheerContainerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProductbeheerContainerComponent ]
+      declarations: [ ProductbeheerContainerComponent ],
+      imports: [MatDialogModule],
+      providers: [MatDialog],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();
 
@@ -17,7 +22,7 @@ describe('ProductbeheerContainerComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('Should create the component', () => {
     expect(component).toBeTruthy();
   });
 });

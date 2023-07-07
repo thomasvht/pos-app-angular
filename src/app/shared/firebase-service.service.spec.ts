@@ -5,12 +5,12 @@ import { FirebaseService } from './firebase.service';
 describe('FirebaseService', () => {
   let service: FirebaseService;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({});
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({});
     service = TestBed.inject(FirebaseService);
   });
 
-  it('should be created', () => {
+  it('Should create the service', () => {
     expect(service).toBeTruthy();
   });
 });

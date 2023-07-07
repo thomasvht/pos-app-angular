@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { KassaContainerComponent } from './kassa-container.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { FirebaseService } from 'src/app/shared/firebase.service';
 
 describe('KassaContainerComponent', () => {
   let component: KassaContainerComponent;
@@ -8,7 +10,9 @@ describe('KassaContainerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ KassaContainerComponent ]
+      declarations: [ KassaContainerComponent ],
+      providers: [FirebaseService],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();
 
@@ -17,7 +21,7 @@ describe('KassaContainerComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('Should create the component', () => {
     expect(component).toBeTruthy();
   });
 });
