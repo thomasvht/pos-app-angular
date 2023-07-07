@@ -5,18 +5,19 @@ import { AppComponent } from './app.component';
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
-      declarations: [
-        AppComponent
-      ],
+      imports: [RouterTestingModule],
+      declarations: [AppComponent],
     }).compileComponents();
   });
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+  // Tests that the 'newProduct' function opens the 'AddProductComponent' dialog
+  it('Should open a dialog when pressing the button for a new product.', () => {
+    const dialogOpenSpy = jest.spyOn(TestBed.inject(MatDialog), 'open');
+    const appComponent = fixture.componentInstance;
+    appComponent.newProduct();
+    expect(dialogOpenSpy).toHaveBeenCalledWith(AddProductComponent, {
+      height: '540px',
+      width: '800px',
+    });
   });
 });
