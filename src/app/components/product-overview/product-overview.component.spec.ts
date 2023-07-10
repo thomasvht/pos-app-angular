@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProductOverviewComponent } from './product-overview.component';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('ProductOverviewComponent', () => {
   let component: ProductOverviewComponent;
@@ -8,7 +10,10 @@ describe('ProductOverviewComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProductOverviewComponent ]
+      declarations: [ ProductOverviewComponent ],
+      imports: [MatDialogModule],
+      providers: [MatDialog],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
     })
     .compileComponents();
 
@@ -17,7 +22,7 @@ describe('ProductOverviewComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('Should create the component', () => {
     expect(component).toBeTruthy();
   });
 });
