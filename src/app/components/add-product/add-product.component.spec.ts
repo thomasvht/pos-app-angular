@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AddProductComponent } from './add-product.component';
 import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('AddProductComponent', () => {
   let component: AddProductComponent;
@@ -12,8 +12,8 @@ describe('AddProductComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ AddProductComponent ],
       imports: [MatDialogModule],
-      providers: [{provide: MAT_DIALOG_DATA, useValue: {}}],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
+      providers: [{provide: MAT_DIALOG_DATA, useValue:  {then: () => {}}}],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
     })
     .compileComponents();
 
